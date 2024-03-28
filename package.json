@@ -16,7 +16,7 @@
     "lint:fix": "eslint src --ext .ts --fix",
     "test": "vitest",
     "build": "tsup src --out-dir build",
-    "knex:build": "node --no-warnings --import tsx ./node_modules/bin/knex",
+    "knex:build": "node --no-warnings --import tsx ./node_modules/.bin/knex",
     "migrate:latest:build": "npm run knex:build migrate:latest"
   },
   "keywords": [],
