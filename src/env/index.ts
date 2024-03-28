@@ -9,11 +9,13 @@ if (process.env.NODE_ENV === 'test') {
 import { z } from 'zod'
 
 const NODE_ENV = ['test', 'development', 'staging', 'production'] as const
+export const DATABASE_CLIENT = ['pg', 'sqlite3'] as const
 
 const envSchema = z.object({
   NODE_ENV: z.enum(NODE_ENV).default('development'),
+  DATABASE_CLIENT: z.enum(DATABASE_CLIENT).default('sqlite3'),
   DATABASE_URL: z.string(),
-  PORT: z.number().default(3333),
+  PORT: z.coerce.number().default(3333),
 })
 
 const _env = envSchema.safeParse(process.env)
